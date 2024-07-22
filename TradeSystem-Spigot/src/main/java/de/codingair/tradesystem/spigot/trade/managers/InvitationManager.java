@@ -20,7 +20,7 @@ import java.util.*;
 
 public class InvitationManager {
     /**
-     * receiver name to invitations from others
+     * receiver to invitations from others
      */
     private final Map<String, Map<String, Invitation>> invitations = new HashMap<>();
     private MyScheduledTask expirationHandler = null;

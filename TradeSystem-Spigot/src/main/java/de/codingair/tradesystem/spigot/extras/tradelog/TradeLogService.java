@@ -4,6 +4,7 @@ import com.github.Anon8281.universalScheduler.UniversalScheduler;
 import de.codingair.codingapi.tools.Callback;
 import de.codingair.tradesystem.spigot.TradeSystem;
 import de.codingair.tradesystem.spigot.database.DatabaseType;
+import de.codingair.tradesystem.spigot.database.migrations.mysql.MySQLConnection;
 import de.codingair.tradesystem.spigot.extras.tradelog.repository.TradeLogRepository;
 import de.codingair.tradesystem.spigot.extras.tradelog.repository.adapters.MysqlTradeLogRepository;
 import de.codingair.tradesystem.spigot.extras.tradelog.repository.adapters.SqlLiteTradeLogRepository;
@@ -87,11 +88,13 @@ public class TradeLogService {
     }
 
     public static boolean connected() {
-        return TradeSystem.getInstance().getDatabaseInitializer().isRunning();
+        return TradeLog.isEnabled() && TradeSystem.getInstance().getDatabaseInitializer().isRunning();
     }
 
     @NotNull
     private static TradeLogRepository getTradeLogRepository() {
+        if (!TradeLog.isEnabled()) throw new NullPointerException("TradeLog is not enabled.");
+
         DatabaseType type = TradeSystem.database().getType();
         switch (type) {
             case MYSQL:
