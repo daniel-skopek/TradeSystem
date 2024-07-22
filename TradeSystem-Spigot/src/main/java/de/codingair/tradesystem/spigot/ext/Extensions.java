@@ -11,15 +11,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Extensions {
-    public static final String COLOR = "#69e070";
-    public static final String COLOR_TRANSLATED = "§x§6§9§e§0§7§0";
     private static final Map<String, Extension> SUPPORTED = new HashMap<>();
-    public static final Extension TradeAudit;
-    public static final Extension TradeReputation;
 
     static {
-        SUPPORTED.put("tradeaudit", TradeAudit = new TradeAuditExt());
-        SUPPORTED.put("tradereputation", TradeReputation = new TradeReputationExt());
+        SUPPORTED.put("tradeaudit", new TradeAuditExt());
+        SUPPORTED.put("tradereputation", new TradeReputationExt());
     }
 
     @NotNull
