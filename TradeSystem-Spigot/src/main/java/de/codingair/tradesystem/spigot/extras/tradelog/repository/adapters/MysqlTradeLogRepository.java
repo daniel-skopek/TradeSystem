@@ -84,7 +84,7 @@ public class MysqlTradeLogRepository implements TradeLogRepository {
                         rs.getString(2),
                         rs.getString(3),
                         rs.getString(4),
-                        Instant.ofEpochMilli(rs.getDate(5).getTime()).atZone(ZoneId.systemDefault()).toLocalDateTime()
+                        Instant.ofEpochMilli(rs.getTimestamp(5).getTime()).atZone(ZoneId.systemDefault()).toLocalDateTime()
                 ));
             }
             return result;
