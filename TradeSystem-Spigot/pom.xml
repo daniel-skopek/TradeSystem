@@ -105,7 +105,7 @@
         </dependency>
 
         <dependency>
-            <groupId>com.github.CodingAir</groupId>
+            <groupId>com.github.Heroify</groupId>
             <artifactId>CodingAPI</artifactId>
             <scope>provided</scope>
         </dependency>
