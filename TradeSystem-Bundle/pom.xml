@@ -92,7 +92,7 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>com.github.Heroify</groupId>
+            <groupId>com.github.CodingAir</groupId>
             <artifactId>CodingAPI</artifactId>
             <scope>compile</scope>
         </dependency>

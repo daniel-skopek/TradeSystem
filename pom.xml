@@ -32,7 +32,7 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>com.github.Heroify</groupId>
+                <groupId>com.github.CodingAir</groupId>
                 <artifactId>CodingAPI</artifactId>
                 <version>1.102</version>
                 <scope>provided</scope>

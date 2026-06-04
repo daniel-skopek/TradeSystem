@@ -20,6 +20,10 @@
 
     <repositories>
         <repository>
+            <id>spigotmc-public</id>
+            <url>https://hub.spigotmc.org/nexus/content/groups/public/</url>
+        </repository>
+        <repository>
             <id>spigot-repo</id>
             <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
         </repository>
@@ -55,10 +59,6 @@
         </repository>
 
         <repository>
-            <id>nexus</id>
-            <url>https://mvn.lumine.io/repository/maven-public/</url>
-        </repository>
-        <repository>
             <id>sk89q-repo</id>
             <url>https://maven.enginehub.org/repo/</url>
         </repository>
@@ -67,6 +67,12 @@
         <repository>
             <id>opencollab-snapshot</id>
             <url>https://repo.opencollab.dev/main/</url>
+        </repository>
+
+        <!-- Kyori (Adventure) -->
+        <repository>
+            <id>kyori-snapshots</id>
+            <url>https://repo.kyori.net/snapshots/</url>
         </repository>
 
         <!-- MythicLib -->
@@ -105,7 +111,7 @@
         </dependency>
 
         <dependency>
-            <groupId>com.github.Heroify</groupId>
+            <groupId>com.github.CodingAir</groupId>
             <artifactId>CodingAPI</artifactId>
             <scope>provided</scope>
         </dependency>
@@ -169,6 +175,12 @@
             <artifactId>api</artifactId>
             <version>2.1.0-SNAPSHOT</version>
             <scope>provided</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>net.kyori</groupId>
+                    <artifactId>event-api</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- Both dependencies are required for MMOItems -->
