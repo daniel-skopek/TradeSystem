@@ -9,6 +9,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -39,12 +40,20 @@ public class PlayerTradeResult extends TradeResult {
                 ItemMeta meta = item.getItemMeta();
                 assert meta != null;
 
-                if (meta.hasDisplayName())
-                    return TradeSystem.handler().isOnlyDisplayNameInMessage() ? meta.getDisplayName() : formatName(item.getType().name()) + " (" + ChatColor.stripColor(meta.getDisplayName()) + ")";
+                String displayName = getDisplayName(meta);
+                if (displayName != null)
+                    return TradeSystem.handler().isOnlyDisplayNameInMessage() ? displayName : formatName(item.getType().name()) + " (" + displayName + "§7)";
             }
 
             return formatName(item.getType().name());
         };
+    }
+
+    @Nullable
+    private static String getDisplayName(@NotNull ItemMeta meta) {
+        if (meta.hasDisplayName()) return meta.getDisplayName();
+        if (meta.hasItemName()) return meta.getItemName();
+        return null;
     }
 
     /**
