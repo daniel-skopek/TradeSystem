@@ -19,6 +19,7 @@ public class MMOItemsDependency implements PluginDependency, Listener {
     @EventHandler
     public void onTradeLog(TradeLogReceiveItemEvent e) {
         String display = getMmoFormat(e.getItem());
+        TradeSystem.getInstance().getLogger().info("[TradeLog DEBUG] MMOItems onTradeLog: mmoFormat=" + display + ", item=" + e.getItem().getType().name());
         if (display != null) e.setMessage(display);
     }
 
@@ -32,8 +33,9 @@ public class MMOItemsDependency implements PluginDependency, Listener {
                 ItemMeta meta = item.getItemMeta();
                 assert meta != null;
 
-                if (meta.hasDisplayName())
-                    return TradeSystem.handler().isOnlyDisplayNameInMessage() ? meta.getDisplayName() : PlayerTradeResult.formatName(type) + " (" + ChatColor.stripColor(meta.getDisplayName()) + ")";
+                String displayName = getDisplayName(meta);
+                if (displayName != null)
+                    return TradeSystem.handler().isOnlyDisplayNameInMessage() ? displayName : PlayerTradeResult.formatName(type) + " (" + displayName + "§7)";
             }
 
             return PlayerTradeResult.formatName(type);
@@ -44,17 +46,23 @@ public class MMOItemsDependency implements PluginDependency, Listener {
     private String getMmoFormat(@NotNull ItemStack item) {
         String type = getMmoType(item);
         String id = getMmoId(item);
-        if (type == null || id == null) return null;
+        if (type == null || id == null) {
+            TradeSystem.getInstance().getLogger().info("[TradeLog DEBUG] MMOItems getMmoFormat: type=" + type + ", id=" + id + " -> returning null");
+            return null;
+        }
 
         String displayName = null;
         if (item.hasItemMeta()) {
             ItemMeta meta = item.getItemMeta();
             assert meta != null;
 
-            if (meta.hasDisplayName()) displayName = ChatColor.stripColor(meta.getDisplayName()) + " ";
+            if (meta.hasDisplayName()) displayName = meta.getDisplayName() + " ";
+            else if (meta.hasItemName()) displayName = meta.getItemName() + " ";
         }
 
-        if (displayName != null) return item.getAmount() + "x " + displayName + " (MMOItem." + type + "." + id + ")";
+        TradeSystem.getInstance().getLogger().info("[TradeLog DEBUG] MMOItems getMmoFormat: type=" + type + ", id=" + id + ", displayName=" + displayName + ", hasItemMeta=" + item.hasItemMeta());
+
+        if (displayName != null) return item.getAmount() + "x " + displayName + "§7 (MMOItem." + type + "." + id + ")";
         return item.getAmount() + "x MMOItem (" + type + "." + id + ")";
     }
 
@@ -66,6 +74,13 @@ public class MMOItemsDependency implements PluginDependency, Listener {
     @Nullable
     private String getMmoId(@NotNull ItemStack item) {
         return MMOItems.getID(item);
+    }
+
+    @Nullable
+    private static String getDisplayName(@NotNull ItemMeta meta) {
+        if (meta.hasDisplayName()) return meta.getDisplayName();
+        if (meta.hasItemName()) return meta.getItemName();
+        return null;
     }
 
     @Nullable
