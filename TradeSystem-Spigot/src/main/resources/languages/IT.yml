@@ -83,7 +83,7 @@ Help_TradeSystem_Layout_Create: '&7Usa &e/%label% layout create <nome> [9..54]'
 Help_TradeSystem_Layout_Activate: '&7Usa &e/%label% layout activate <nome>'
 Help_TradeSystem_Layout_Delete: '&7Usa &e/%label% layout delete <nome>'
 Help_TradeSystem_Layout_Edit: '&7Usa &e/%label% layout edit <nome>'
-Help_TradeLog: '&7Usa &e/%label% <nome>'
+Help_TradeLog: '&7Usa &e/%label% <nome> [pagina]'
 Layout_Does_Not_Exist: '&cQuesto layout non esiste!'
 Layout_Activated: "&7Il layout '&b%name%&7' è stato &aattivato&7."
 Layout_Deleted: "&7Il layout '&b%name%&7' è stato &ccancellato&7."

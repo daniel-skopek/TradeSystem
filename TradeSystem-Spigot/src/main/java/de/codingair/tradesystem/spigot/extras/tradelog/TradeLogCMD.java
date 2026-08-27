@@ -56,21 +56,29 @@ public class TradeLogCMD extends CommandBuilder {
             public boolean runCommand(CommandSender sender, String label, String argument, String[] args) {
                 try {
                     if (TradeLog.isEnabled()) {
+                        final int page = parsePage(args);
+
                         Bukkit.getScheduler().runTaskAsynchronously(TradeSystem.getInstance(), () -> {
                             if (!TradeLogService.connected()) {
                                 Lang.send(sender, "TradeLog_Disabled", new Lang.P("label", label));
                                 return;
                             }
 
-                            List<TradeLog.Entry> log = TradeLogService.getLogMessages(argument);
+                            long total = TradeLogService.countLogMessages(argument);
+                            int pages = (int) Math.max(1, (total + TradeLog.PAGE_SIZE - 1) / TradeLog.PAGE_SIZE);
+                            int currentPage = Math.min(page, pages);
+
+                            List<TradeLog.Entry> log = TradeLogService.getLogMessages(argument, currentPage);
 
                             List<String> messages = new ArrayList<>();
                             messages.add("§0");
                             messages.add("§0");
                             messages.add("§7§m                            §c §lTRADE LOG§7 §m                            ");
                             messages.add("§0");
+                            messages.add(Lang.get("TradeLog_Page", new Lang.P("page", String.valueOf(currentPage)), new Lang.P("pages", String.valueOf(pages))));
+                            messages.add("§0");
 
-                            if (log.isEmpty()) messages.add("  §c-");
+                            if (log == null || log.isEmpty()) messages.add("  §c-");
                             else {
                                 String p1 = null;
                                 String p2 = null;
@@ -103,6 +111,11 @@ public class TradeLogCMD extends CommandBuilder {
                                 }
                             }
 
+                            if (currentPage < pages) {
+                                messages.add("§0");
+                                messages.add(Lang.get("TradeLog_More_Pages", new Lang.P("label", label), new Lang.P("player", argument), new Lang.P("page", String.valueOf(currentPage + 1))));
+                            }
+
                             sender.sendMessage(messages.toArray(new String[0]));
                         });
                     } else {
@@ -114,5 +127,16 @@ public class TradeLogCMD extends CommandBuilder {
                 return false;
             }
         });
+    }
+
+    private static int parsePage(String[] args) {
+        if (args == null || args.length < 2) return 1;
+
+        try {
+            int page = Integer.parseInt(args[1]);
+            return page < 1 ? 1 : page;
+        } catch (NumberFormatException e) {
+            return 1;
+        }
     }
 }

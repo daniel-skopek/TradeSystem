@@ -15,8 +15,10 @@ public interface TradeLogRepository {
 
     long count(String player, String message);
 
+    long countLogMessages(String playerName);
+
     @Nullable
-    List<TradeLog.Entry> getLogMessages(String playerName);
+    List<TradeLog.Entry> getLogMessages(String playerName, int page);
 
     boolean haveTraded(String player1, String player2);
 }

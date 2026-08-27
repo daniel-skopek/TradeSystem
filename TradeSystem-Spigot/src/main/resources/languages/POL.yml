@@ -83,7 +83,7 @@ Help_TradeSystem_Layout_Create: '&7Use &e/%label% layout create <name> [9..54]'
 Help_TradeSystem_Layout_Activate: "&7Użycie &e/%label% layout activate <nazwa>"
 Help_TradeSystem_Layout_Delete: "&7Użycie &e/%label% layout delete <nazwa>"
 Help_TradeSystem_Layout_Edit: "&7Użycie &e/%label% layout edit <nazwa>"
-Help_TradeLog: "&7Użycie &e/%label% <name>"
+Help_TradeLog: "&7Użycie &e/%label% <name> [strona]"
 Layout_Does_Not_Exist: "&cTen układ nie istnieje!"
 Layout_Activated: "&7Układ '&b%name%&7' został &aaktywowany&7."
 Layout_Deleted: "&7Układ '&b%name%&7' został &cusunięty&7."

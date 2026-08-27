@@ -19,6 +19,7 @@ import java.time.LocalDateTime;
 import java.util.*;
 
 public class TradeLog {
+    public static final int PAGE_SIZE = 10;
     private static FileConfiguration config;
 
     public static final Message STARTED = new Message("started", "Trade started", "§e");

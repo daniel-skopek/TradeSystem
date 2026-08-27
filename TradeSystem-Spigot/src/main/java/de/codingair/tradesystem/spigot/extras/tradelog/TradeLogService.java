@@ -47,6 +47,12 @@ public class TradeLogService {
         return getTradeLogRepository().count(player, message);
     }
 
+    public static long countLogMessages(@NotNull String playerName) {
+        if (!connected()) return 0;
+
+        return getTradeLogRepository().countLogMessages(playerName);
+    }
+
     public static void log(@NotNull String player1, @NotNull String player2, @Nullable String message) {
         logLater(player1, player2, message, 0);
     }
@@ -66,9 +72,9 @@ public class TradeLogService {
         else runnable.run();
     }
 
-    public static List<TradeLog.Entry> getLogMessages(String playerName) {
+    public static List<TradeLog.Entry> getLogMessages(String playerName, int page) {
         if (!connected()) return new ArrayList<>();
-        return getTradeLogRepository().getLogMessages(playerName);
+        return getTradeLogRepository().getLogMessages(playerName, page);
     }
 
     public static boolean haveTraded(@NotNull String player1, @NotNull String player2) {
