@@ -1,5 +1,6 @@
 package de.codingair.tradesystem.spigot.extras.tradelog;
 
+import com.github.Anon8281.universalScheduler.UniversalScheduler;
 import de.codingair.codingapi.server.commands.builder.BaseComponent;
 import de.codingair.codingapi.server.commands.builder.CommandBuilder;
 import de.codingair.codingapi.server.commands.builder.CommandComponent;
@@ -58,7 +59,7 @@ public class TradeLogCMD extends CommandBuilder {
                     if (TradeLog.isEnabled()) {
                         final int page = parsePage(args);
 
-                        Bukkit.getScheduler().runTaskAsynchronously(TradeSystem.getInstance(), () -> {
+                        UniversalScheduler.getScheduler(TradeSystem.getInstance()).runTaskAsynchronously(() -> {
                             if (!TradeLogService.connected()) {
                                 Lang.send(sender, "TradeLog_Disabled", new Lang.P("label", label));
                                 return;
