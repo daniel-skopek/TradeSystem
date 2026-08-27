@@ -124,6 +124,7 @@ Items_Dropped: '&7Il tuo inventario &cè pieno&7, qualche oggetto &cè caduto a 
 TradeLog_Disabled: '&7I log dei trade sono &cdisabilitati&7!'
 TradeLog_Page: '&7Pagina &e%page%&7/&e%pages%'
 TradeLog_More_Pages: '&7Usa &e/%label% %player% %page% &7per la pagina successiva.'
+TradeLog_No_Entries: '&7Nessun registro di scambio trovato per &e%player%&7.'
 Sign_Enter_Amount: "^^^^^^^^\nEnter amount\nabove"
 Leftclick: Leftclick
 Rightclick: Rightclick

@@ -124,6 +124,7 @@ Items_Dropped: '&7Twój ekwipunek jest &cpełny&7, niektóre przedmioty &cspadł
 TradeLog_Disabled: "&7Logi wymian zostały &cwyłączone&7!"
 TradeLog_Page: '&7Strona &e%page%&7/&e%pages%'
 TradeLog_More_Pages: '&7Użyj &e/%label% %player% %page% &7, aby przejść do następnej strony.'
+TradeLog_No_Entries: '&7Nie znaleziono logów wymian dla gracza &e%player%&7.'
 Sign_Enter_Amount: "^^^^^^^^\nWypisz ilość\npowyżej"
 Leftclick: 'Lewy'
 Rightclick: 'Prawy'

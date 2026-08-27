@@ -124,6 +124,7 @@ Items_Dropped: '&7Envanteriniz &cdolu&7, bazı eşyalar yere &cbırakıldı&7!'
 TradeLog_Disabled: '&7Takas girişi &ckapatılmış&7!'
 TradeLog_Page: '&7Sayfa &e%page%&7/&e%pages%'
 TradeLog_More_Pages: '&7Sonraki sayfa için &e/%label% %player% %page% &7kullan.'
+TradeLog_No_Entries: '&7%player% &7için takas kaydı bulunamadı.'
 Sign_Enter_Amount: "^^^^^^^^\nEnter amount\nabove"
 Leftclick: 'Leftclick'
 Rightclick: 'Rightclick'

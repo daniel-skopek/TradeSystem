@@ -124,6 +124,7 @@ Items_Dropped: '&7Dein Inventar war &cvoll&7, ein paar Items wurden &cauf den Bo
 TradeLog_Disabled: "&7Trade Logging ist &cdeaktiviert&7!"
 TradeLog_Page: '&7Seite &e%page%&7/&e%pages%'
 TradeLog_More_Pages: '&7Benutze &e/%label% %player% %page% &7für die nächste Seite.'
+TradeLog_No_Entries: '&7Keine Trade-Logs für &e%player% &7gefunden.'
 Sign_Enter_Amount: "^^^^^^^^\nBetrag oben\neingeben"
 Leftclick: 'Linksklick'
 Rightclick: 'Rechtsklick'

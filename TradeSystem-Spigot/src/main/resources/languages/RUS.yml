@@ -124,6 +124,7 @@ Items_Dropped: '&7Ваш инвентарь &cзаполнен&7, некотор
 TradeLog_Disabled: "&7Регистрация сделок &cотключена&7!"
 TradeLog_Page: '&7Страница &e%page%&7/&e%pages%'
 TradeLog_More_Pages: '&7Используй &e/%label% %player% %page% &7для следующей страницы.'
+TradeLog_No_Entries: '&7Для игрока &e%player% &7не найдено записей о сделках.'
 Sign_Enter_Amount: "^^^^^^^^\nВведите сумму\nвыше"
 Leftclick: 'Левый клик'
 Rightclick: 'Правый клик'

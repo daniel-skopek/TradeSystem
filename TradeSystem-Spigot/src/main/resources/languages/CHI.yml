@@ -124,6 +124,7 @@ Items_Dropped: '&7你的背包&c没有&7足够的空间, 一些物品&c掉落在
 TradeLog_Disabled: "&7交易注册已&c禁用&7!"
 TradeLog_Page: '&7第 &e%page%&7/&e%pages% 页'
 TradeLog_More_Pages: '&7使用 &e/%label% %player% %page% &7查看下一页.'
+TradeLog_No_Entries: '&7未找到玩家 &e%player% &7的交易记录.'
 Sign_Enter_Amount: "^^^^^^^^\nEnter amount\nabove"
 Leftclick: '鼠标左键'
 Rightclick: '鼠标右键'
