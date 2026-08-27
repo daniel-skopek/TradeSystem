@@ -124,6 +124,7 @@ Items_Dropped: '&7Seu inventário estava &ccheio&7, alguns itens foram &cdropado
 TradeLog_Disabled: '&7O registro de transações está &cdesativado&7!'
 TradeLog_Page: '&7Página &e%page%&7/&e%pages%'
 TradeLog_More_Pages: '&7Use &e/%label% %player% %page% &7para a próxima página.'
+TradeLog_No_Entries: '&7Nenhum registro de troca encontrado para &e%player%&7.'
 Sign_Enter_Amount: "^^^^^^^^\nInsira a quantia\nacima"
 Leftclick: Clique-esquerdo
 Rightclick: Clique-direito

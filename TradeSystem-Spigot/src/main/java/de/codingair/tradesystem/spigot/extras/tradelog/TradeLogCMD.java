@@ -54,6 +54,11 @@ public class TradeLogCMD extends CommandBuilder {
             }
 
             @Override
+            public CommandComponent getChild(String arg) {
+                return this;
+            }
+
+            @Override
             public boolean runCommand(CommandSender sender, String label, String argument, String[] args) {
                 try {
                     if (TradeLog.isEnabled()) {
@@ -79,8 +84,9 @@ public class TradeLogCMD extends CommandBuilder {
                             messages.add(Lang.get("TradeLog_Page", new Lang.P("page", String.valueOf(currentPage)), new Lang.P("pages", String.valueOf(pages))));
                             messages.add("§0");
 
-                            if (log == null || log.isEmpty()) messages.add("  §c-");
-                            else {
+                            if (log == null || log.isEmpty()) {
+                                messages.add(Lang.get("TradeLog_No_Entries", new Lang.P("player", argument)));
+                            } else {
                                 String p1 = null;
                                 String p2 = null;
                                 boolean samePlayers = false;
