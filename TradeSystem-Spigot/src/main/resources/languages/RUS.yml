@@ -122,6 +122,8 @@ Fancy_Countdown: ' &7- &e%seconds%сек.'
 Economy_Error: '&7Сделка &cотменена &7из-за &cошибка экономики&7.'
 Items_Dropped: '&7Ваш инвентарь &cзаполнен&7, некоторые предметы &cвыпали на землю&7!'
 TradeLog_Disabled: "&7Регистрация сделок &cотключена&7!"
+TradeLog_Page: '&7Страница &e%page%&7/&e%pages%'
+TradeLog_More_Pages: '&7Используй &e/%label% %player% %page% &7для следующей страницы.'
 Sign_Enter_Amount: "^^^^^^^^\nВведите сумму\nвыше"
 Leftclick: 'Левый клик'
 Rightclick: 'Правый клик'

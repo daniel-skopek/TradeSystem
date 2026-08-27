@@ -122,6 +122,8 @@ Fancy_Countdown: ' &7- &e%seconds%s'
 Economy_Error: '&cEl intercambio fue cancelado debido a un error en la economía.'
 Items_Dropped: '&7Your inventory was &cfull&7, some items were &cdropped on the ground&7!'
 TradeLog_Disabled: "&7Trade logging is &cdisabled&7!"
+TradeLog_Page: '&7Página &e%page%&7/&e%pages%'
+TradeLog_More_Pages: '&7Usa &e/%label% %player% %page% &7para la siguiente página.'
 Sign_Enter_Amount: "^^^^^^^^\nEnter amount\nabove"
 Leftclick: 'Leftclick'
 Rightclick: 'Rightclick'

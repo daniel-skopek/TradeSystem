@@ -122,6 +122,8 @@ Fancy_Countdown: ' &7- &e%seconds%s'
 Economy_Error: '&7Obchod byl &czrušen &7kvůli &cchybě ekonomiky&7.'
 Items_Dropped: '&7Tvůj inventář je &cplný&7, nějaké věci byli &cvyhozeny na zem&7!'
 TradeLog_Disabled: "&7Logování obchodů bylo &cvypnuto&7!"
+TradeLog_Page: '&7Stránka &e%page%&7/&e%pages%'
+TradeLog_More_Pages: '&7Použij &e/%label% %player% %page% &7pro další stránku.'
 Sign_Enter_Amount: "^^^^^^^^\nVlož částku\nnahoře"
 Leftclick: 'Levý klik'
 Rightclick: 'Pravý klik'
