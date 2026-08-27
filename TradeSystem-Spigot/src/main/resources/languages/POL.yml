@@ -122,6 +122,8 @@ Fancy_Countdown: ' &7- &e%seconds%s'
 Economy_Error: '&7Wymiana została &canulowana &7przez &cbłąd ekonomii&7.'
 Items_Dropped: '&7Twój ekwipunek jest &cpełny&7, niektóre przedmioty &cspadły na ziemię&7!'
 TradeLog_Disabled: "&7Logi wymian zostały &cwyłączone&7!"
+TradeLog_Page: '&7Strona &e%page%&7/&e%pages%'
+TradeLog_More_Pages: '&7Użyj &e/%label% %player% %page% &7, aby przejść do następnej strony.'
 Sign_Enter_Amount: "^^^^^^^^\nWypisz ilość\npowyżej"
 Leftclick: 'Lewy'
 Rightclick: 'Prawy'

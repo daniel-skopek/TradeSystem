@@ -122,6 +122,8 @@ Fancy_Countdown: '&7正在处理-&e%seconds%s'
 Economy_Error: '&7此交易因&c金额错误&7而&c取消&7.'
 Items_Dropped: '&7你的背包&c没有&7足够的空间, 一些物品&c掉落在地上了&7!'
 TradeLog_Disabled: "&7交易注册已&c禁用&7!"
+TradeLog_Page: '&7第 &e%page%&7/&e%pages% 页'
+TradeLog_More_Pages: '&7使用 &e/%label% %player% %page% &7查看下一页.'
 Sign_Enter_Amount: "^^^^^^^^\nEnter amount\nabove"
 Leftclick: '鼠标左键'
 Rightclick: '鼠标右键'

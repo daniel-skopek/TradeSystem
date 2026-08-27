@@ -144,3 +144,5 @@ Shulker_Box: 'Shulker Box'
 Trade_Finish_Report_Receive: "  &a+ &7%object%"
 Trade_Finish_Report_Give: "  &c- &7%object%"
 Trade_Finish_Report_Object_Item: "%amount%x %item%"
+TradeLog_Page: '&7Safhe &e%page%&7/&e%pages%'
+TradeLog_More_Pages: '&7Baraye safhe badi &e/%label% %player% %page% &7ra estefade konid.'

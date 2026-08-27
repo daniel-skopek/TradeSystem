@@ -122,6 +122,8 @@ Fancy_Countdown: ' &7- &e%seconds%s'
 Economy_Error: '&7O comércio foi &cancelado &7devido a um &cerro econômico&7.'
 Items_Dropped: '&7Seu inventário estava &ccheio&7, alguns itens foram &cdropados no chão&7!'
 TradeLog_Disabled: '&7O registro de transações está &cdesativado&7!'
+TradeLog_Page: '&7Página &e%page%&7/&e%pages%'
+TradeLog_More_Pages: '&7Use &e/%label% %player% %page% &7para a próxima página.'
 Sign_Enter_Amount: "^^^^^^^^\nInsira a quantia\nacima"
 Leftclick: Clique-esquerdo
 Rightclick: Clique-direito

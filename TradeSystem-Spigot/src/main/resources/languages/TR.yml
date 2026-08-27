@@ -122,6 +122,8 @@ Fancy_Countdown: ' &7- &e%seconds%s'
 Economy_Error: '&7Takas &ciptal edildi. &7Bir &cekonomi hatası yüzüden&7.'
 Items_Dropped: '&7Envanteriniz &cdolu&7, bazı eşyalar yere &cbırakıldı&7!'
 TradeLog_Disabled: '&7Takas girişi &ckapatılmış&7!'
+TradeLog_Page: '&7Sayfa &e%page%&7/&e%pages%'
+TradeLog_More_Pages: '&7Sonraki sayfa için &e/%label% %player% %page% &7kullan.'
 Sign_Enter_Amount: "^^^^^^^^\nEnter amount\nabove"
 Leftclick: 'Leftclick'
 Rightclick: 'Rightclick'
