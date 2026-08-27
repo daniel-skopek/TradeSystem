@@ -84,14 +84,33 @@ public class SqlLiteTradeLogRepository implements TradeLogRepository {
     }
 
     @Override
-    public @Nullable List<TradeLog.Entry> getLogMessages(String playerName) {
-        String sql = "SELECT id, player1, player2, message, timestamp FROM tradelog " +
-                "WHERE player1=? OR player2=? ORDER BY timestamp DESC LIMIT 40;";
+    public long countLogMessages(String playerName) {
+        String sql = "SELECT COUNT(1) as count FROM tradelog WHERE player1=? OR player2=?;";
 
         try (Connection conn = SqlLiteConnection.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, playerName);
             pstmt.setString(2, playerName);
+
+            ResultSet set = pstmt.executeQuery();
+            return set.next() ? set.getLong("count") : 0;
+        } catch (Exception e) {
+            TradeSystem.getInstance().getLogger().severe("Could not count log messages for player '" + playerName + "': " + e.getMessage() + " [SQLite]");
+            return 0;
+        }
+    }
+
+    @Override
+    public @Nullable List<TradeLog.Entry> getLogMessages(String playerName, int page) {
+        String sql = "SELECT id, player1, player2, message, timestamp FROM tradelog " +
+                "WHERE player1=? OR player2=? ORDER BY timestamp DESC LIMIT ? OFFSET ?;";
+
+        try (Connection conn = SqlLiteConnection.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, playerName);
+            pstmt.setString(2, playerName);
+            pstmt.setInt(3, TradeLog.PAGE_SIZE);
+            pstmt.setInt(4, (page - 1) * TradeLog.PAGE_SIZE);
             ResultSet rs = pstmt.executeQuery();
 
             List<TradeLog.Entry> result = new ArrayList<>();

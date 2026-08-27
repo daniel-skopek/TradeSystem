@@ -83,7 +83,7 @@ Help_TradeSystem_Layout_Create: '&7Use &e/%label% layout create <jméno> [9..54]
 Help_TradeSystem_Layout_Activate: '&7Zadej &e/%label% layout activate <jméno>'
 Help_TradeSystem_Layout_Delete: '&7Zadej &e/%label% layout delete <jméno>'
 Help_TradeSystem_Layout_Edit: '&7Zadej &e/%label% layout edit <jméno>'
-Help_TradeLog: '&7Zadej &e/%label% <jméno>'
+Help_TradeLog: '&7Zadej &e/%label% <jméno> [stránka]'
 Layout_Does_Not_Exist: '&cToto rozložení neexistuje!'
 Layout_Activated: '&7Toto rozložení ''&b%name%&7'' bylo &aaktivováno&7.'
 Layout_Deleted: '&7Toto rozložení ''&b%name%&7'' bylo &csmazáno&7.'

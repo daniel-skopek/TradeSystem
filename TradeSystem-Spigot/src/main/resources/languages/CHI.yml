@@ -83,7 +83,7 @@ Help_TradeSystem_Layout_Create: '&7Use &e/%label% layout create <name> [9..54]'
 Help_TradeSystem_Layout_Activate: '&7使用 &e/%label% layout activate <名称>激活界面'
 Help_TradeSystem_Layout_Delete: '&7使用 &e/%label% layout delete <名称>删除界面'
 Help_TradeSystem_Layout_Edit: '&7使用 &e/%label% layout edit <名称>编辑界面'
-Help_TradeLog: "&7使用  &e/%label% <name>"
+Help_TradeLog: "&7使用  &e/%label% <name> [page]"
 Layout_Does_Not_Exist: '&c这个界面不存在!'
 Layout_Activated: '&7界面 ''&b%name%&7'' 已&a激活&7.'
 Layout_Deleted: '&7界面 ''&b%name%&7'' 已&c删除&7.'

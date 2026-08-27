@@ -83,7 +83,7 @@ Help_TradeSystem_Layout_Create: '&7Напиши &e/%label% layout create <наз
 Help_TradeSystem_Layout_Activate: '&7Напиши &e/%label% layout activate <назва>'
 Help_TradeSystem_Layout_Delete: '&7Напиши &e/%label% layout delete <назва>'
 Help_TradeSystem_Layout_Edit: '&7Напиши &e/%label% layout edit <назва>'
-Help_TradeLog: '&7Напиши: &e/%label% <name>'
+Help_TradeLog: '&7Напиши: &e/%label% <name> [сторінка]'
 Layout_Does_Not_Exist: '&cЗазначений макет не знайдено.'
 Layout_Activated: '&7Макет ''&b%name%&7'' &aувімкнений&7.'
 Layout_Deleted: '&7Макет ''&b%name%&7'' &cвидалений&7.'
