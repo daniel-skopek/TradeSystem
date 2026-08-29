@@ -1,7 +1,6 @@
 package de.codingair.tradesystem.spigot.extras.tradelog;
 
 import de.codingair.codingapi.files.ConfigFile;
-import de.codingair.codingapi.utils.ChatColor;
 import de.codingair.tradesystem.spigot.TradeSystem;
 import de.codingair.tradesystem.spigot.events.TradeLogReceiveItemEvent;
 import de.codingair.tradesystem.spigot.extras.external.PluginDependencies;
@@ -54,8 +53,6 @@ public class TradeLog {
      * @param getting   The item being transferred.
      */
     public static void logItemReceive(@NotNull Player receiver, boolean initiator, @NotNull String trader, @NotNull UUID tradeId, @NotNull ItemStack getting) {
-        TradeSystem.getInstance().getLogger().info("[TradeLog DEBUG] logItemReceive called: receiver=" + receiver.getName() + ", trader=" + trader + ", material=" + getting.getType().name() + ", amount=" + getting.getAmount() + ", hasItemMeta=" + getting.hasItemMeta());
-
         Player tradingPlayer = Bukkit.getPlayerExact(trader);
         TradeLogReceiveItemEvent e = tradingPlayer == null ? new TradeLogReceiveItemEvent(receiver, trader, tradeId, getting) : new TradeLogReceiveItemEvent(receiver, tradingPlayer, getting);
         Bukkit.getPluginManager().callEvent(e);
@@ -63,29 +60,20 @@ public class TradeLog {
         String message = e.getMessage();
         if (message == null) {
             String type = PluginDependencies.get(MMOItemsDependency.class).getMmoNameSafely(getting);
-            TradeSystem.getInstance().getLogger().info("[TradeLog DEBUG] MMOItem type from getMmoNameSafely: " + type);
             if (type == null) type = getting.getType().name();
 
             if (getting.hasItemMeta()) {
                 ItemMeta meta = getting.getItemMeta();
                 String displayName = getItemDisplayName(meta);
                 if (displayName != null) {
-                    TradeSystem.getInstance().getLogger().info("[TradeLog DEBUG] Adding display name: " + displayName);
                     type += " (" + displayName + "§7)";
-                } else {
-                    TradeSystem.getInstance().getLogger().info("[TradeLog DEBUG] No display name: hasItemMeta=true, hasDisplayName=" + meta.hasDisplayName() + ", displayName=" + meta.getDisplayName());
                 }
-            } else {
-                TradeSystem.getInstance().getLogger().info("[TradeLog DEBUG] No display name: hasItemMeta=false");
             }
 
             message = getting.getAmount() + "x " + type;
-        } else {
-            TradeSystem.getInstance().getLogger().info("[TradeLog DEBUG] Custom message from event: " + message);
         }
 
         String finalMessage = TradeLog.RECEIVED.get(receiver.getName(), message);
-        TradeSystem.getInstance().getLogger().info("[TradeLog DEBUG] Final log message: " + finalMessage);
 
         TradeLogService.log(
                 initiator ? receiver.getName() : trader,
