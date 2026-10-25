@@ -6,7 +6,9 @@ import de.codingair.codingapi.API;
 import de.codingair.codingapi.files.ConfigFile;
 import de.codingair.codingapi.files.FileManager;
 import de.codingair.codingapi.nms.NmsCheck;
+import de.codingair.codingapi.nms.NmsCheckError;
 import de.codingair.codingapi.player.chat.ChatButtonManager;
+import de.codingair.codingapi.server.reflections.PacketUtils;
 import de.codingair.codingapi.server.specification.Version;
 import de.codingair.codingapi.utils.Value;
 import de.codingair.packetmanagement.utils.Proxy;
@@ -41,6 +43,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.FileNotFoundException;
+import java.lang.reflect.Field;
 import java.util.logging.Level;
 
 public class TradeSystem extends JavaPlugin implements Proxy {
@@ -65,6 +68,7 @@ public class TradeSystem extends JavaPlugin implements Proxy {
 
     private boolean firstSetup;
     private boolean workingNms = false;
+    private boolean signGuiSupported = true;
     private YamlConfiguration oldConfig;
 
     public static void log(String message) {
@@ -192,8 +196,61 @@ public class TradeSystem extends JavaPlugin implements Proxy {
     }
 
     private void checkNms() {
-        NmsCheck.test(new Class[0]);
+        try {
+            NmsCheck.test(new Class[0]);
+        } catch (NmsCheckError e) {
+            if (!isSignGuiInitializationError(e)) throw e;
+
+            // The sign GUI is optional. Since 26.3, the sign packet uses a List instead of a String[], which the
+            // bundled CodingAPI version does not support. Exclude it from the check so the plugin can still start.
+            signGuiSupported = false;
+            disableSignGuiNmsCheck();
+            getLogger().warning("The sign input GUI is not compatible with this server version and has been disabled. The anvil input GUI will be used instead.");
+
+            // NmsCheck stops at the first failing class. Retry with the patched class list to check the rest.
+            NmsCheck.testInternalApi();
+        }
+
         workingNms = true;
+    }
+
+    private static boolean isSignGuiInitializationError(@NotNull NmsCheckError error) {
+        String message = error.getMessage();
+        if (message != null && message.contains("SignGUI$NmsWrapper")) return true;
+
+        for (Throwable t = error; t != null; t = t.getCause()) {
+            for (StackTraceElement element : t.getStackTrace()) {
+                String className = element.getClassName();
+                if (className.endsWith(".SignGUI") || className.endsWith(".SignGUI$NmsWrapper")) return true;
+            }
+
+            if (t.getCause() == t) break;
+        }
+
+        return false;
+    }
+
+    /**
+     * Removes the unsupported SignGUI class from the internal NmsCheck class list. The list is also used by
+     * {@code API}'s static initializer, so it must be patched before {@code API} is loaded.
+     */
+    private static void disableSignGuiNmsCheck() {
+        try {
+            Field classesField = NmsCheck.class.getDeclaredField("C");
+            classesField.setAccessible(true);
+            Class<?>[] classes = (Class<?>[]) classesField.get(null);
+
+            for (int i = 0; i < classes.length; i++) {
+                if (!classes[i].getName().endsWith(".SignGUI$NmsWrapper")) continue;
+
+                System.arraycopy(classes, i + 1, classes, i, classes.length - i - 1);
+                // Keep the array length intact; PacketUtils is already initialized and safe to check twice.
+                classes[classes.length - 1] = PacketUtils.class;
+                return;
+            }
+        } catch (ReflectiveOperationException | RuntimeException e) {
+            throw new IllegalStateException("Could not disable the incompatible sign GUI NMS check. Please update CodingAPI.", e);
+        }
     }
 
     private void loadManagers() {
@@ -318,6 +375,13 @@ public class TradeSystem extends JavaPlugin implements Proxy {
 
     public YamlConfiguration getOldConfig() {
         return oldConfig;
+    }
+
+    /**
+     * @return Whether the bundled sign GUI is compatible with this server version.
+     */
+    public boolean isSignGuiSupported() {
+        return signGuiSupported;
     }
 
     public DatabaseHandler getDatabaseInitializer() {

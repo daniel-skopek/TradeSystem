@@ -11,6 +11,7 @@ import de.codingair.tradesystem.spigot.trade.gui.layout.types.gui.*;
 import de.codingair.tradesystem.spigot.trade.gui.layout.types.utils.TriFunction;
 import de.codingair.tradesystem.spigot.trade.gui.layout.utils.Perspective;
 import de.codingair.tradesystem.spigot.utils.FloodgateUtils;
+import de.codingair.tradesystem.spigot.utils.InputGUI;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -108,7 +109,10 @@ public abstract class InputIcon<G> extends LayoutIcon implements TradeIcon, Clic
             this.bedrockIcon = null;
         }
 
-        switch (TradeSystem.handler().getInputGUI()) {
+        InputGUI inputGUI = TradeSystem.handler().getInputGUI();
+        if (inputGUI == InputGUI.SIGN && !TradeSystem.getInstance().isSignGuiSupported()) inputGUI = InputGUI.ANVIL;
+
+        switch (inputGUI) {
             case SIGN:
                 this.icon = new SimpleSignGUIIcon<G>(itemStack) {
                     @Override

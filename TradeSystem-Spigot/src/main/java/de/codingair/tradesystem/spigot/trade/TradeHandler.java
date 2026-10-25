@@ -104,6 +104,10 @@ public class TradeHandler {
         this.requestOnShiftRightclick = config.getBoolean("TradeSystem.Action_To_Request.Shift_Rightclick", false);
         this.tradeBoth = config.getBoolean("TradeSystem.Trade_Both", true);
         this.inputGUI = InputGUI.getByName(config.getString("TradeSystem.Input_GUI", "SIGN"));
+        if (this.inputGUI == InputGUI.SIGN && !TradeSystem.getInstance().isSignGuiSupported()) {
+            this.inputGUI = InputGUI.ANVIL;
+            TradeSystem.getInstance().getLogger().warning("The configured sign input GUI is not supported by this server version. The anvil input GUI will be used instead.");
+        }
         this.dropItems = config.getBoolean("TradeSystem.Trade_Drop_Items", true);
 
         this.tradeReportItems = config.getBoolean("TradeSystem.Trade_Finish_Report.Items", true);
